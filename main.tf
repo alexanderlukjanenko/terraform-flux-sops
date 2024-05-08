@@ -38,7 +38,7 @@ module "flux_bootstrap" {
 
 terraform {
   backend "gcs" {
-    bucket = "tf-state-flux"
+    bucket = "tf-state-flux-sops"
     prefix = "terraform/state"
   }
 }
@@ -56,7 +56,7 @@ module "gke-workload-identity" {
 }
 
 module "kms" {
-  source             = "github.com/vit-um/terraform-google-kms"
+  source             = "github.com/den-vasyliev/terraform-google-kms"
   project_id         = var.GOOGLE_PROJECT
   keyring            = "sops-flux"
   location           = "global"
